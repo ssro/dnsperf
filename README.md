@@ -4,21 +4,29 @@
 
 Alpine linux build of Nominum [dnsperf](http://nominum.com/measurement-tools/)
 
-This image doesn't include the sample query data file (~73 MB gzipped),
-since it would make the image larger.
+Building an image out of this repository won't create an image with the sample file, unless you 
+explicitly create your own by uncommenting few lines in Dockerfile (see below). However I'm providing an image 
+with the compressed sample data file (**`qdf`** tag)
 
 
 ### Running the image form quay.io
 
-`docker run -it --rm quay.io/ssro/dnsperf`
+```
+docker run -it --rm quay.io/ssro/dnsperf
+```
+or
+
+```
+docker run -it --rm quay.io/ssro/dnsperf:qdf
+```
 
 ### Building your own image
 
 1. Clone this repo and `cd` into it
-2. `$ docker build -t dnsperf .`
-3. `$ docker run -it --rm some-dnsperf dnsperf`
+2. `docker build -t dnsperf .`
+3. `docker run -it --rm some-dnsperf dnsperf`
 
-For help just invoke `dnsperf -h` inside the container
+For help just invoke **`dnsperf -h`** inside the container
 
 ### Including the sample query file
 
@@ -33,7 +41,7 @@ Uncomment below code inside dockerfile to include the file and rebuild
 
 This will take some time, based on how fast is the download.
 
-Also, the sample file can be downloaded inside the container
+Also, the sample file can be downloaded inside the container using the above ftp link
 
 ### Usage
 
