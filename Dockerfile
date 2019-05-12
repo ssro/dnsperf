@@ -2,26 +2,26 @@ FROM alpine:latest
 
 LABEL maintainer Sebastian Sasu <sebi@nologin.ro>
 
-ENV DNSPERF dnsperf-src-2.1.0.0-1
+ENV DNSPERF dnsperf-2.2.1
 
-RUN apk add --update --no-cache --virtual deps wget g++ make bind-dev openssl-dev libxml2-dev libcap-dev json-c-dev \
-  && apk add --update --no-cache bind libcrypto1.0 \
-  && wget ftp://ftp.nominum.com/pub/nominum/dnsperf/2.1.0.0/$DNSPERF.tar.gz \
+RUN apk add --update --no-cache --virtual deps wget g++ make bind-dev openssl-dev libxml2-dev libcap-dev json-c-dev krb5-dev \
+  && apk add --update --no-cache bind libcrypto1.1 \
+  && wget https://www.dns-oarc.net/files/dnsperf/$DNSPERF.tar.gz \
   && tar zxvf $DNSPERF.tar.gz \
   && cd $DNSPERF \
   && sh configure \
   && make \
-  && strip dnsperf resperf \
+  && strip ./src/dnsperf ./src/resperf \
   && make install \
   && apk del deps \
-  && rm -rf /var/cache/apk/* /$DNSPERF*
+  && rm -rf /$DNSPERF*
 
 # Use this if you want to integrate the sample query file
 
 #RUN apk add --update --no-cache wget \
-#   && wget ftp://ftp.nominum.com/pub/nominum/dnsperf/data/queryfile-example-current.gz \
-#   && gunzip queryfile-example-current.gz \
-#   && rm -rf queryfile-example-current.gz \
+#   && wget https://www.dns-oarc.net/files/dnsperf/data/queryfile-example-10million-201202.gz \
+#   && gunzip queryfile-example-10million-201202.gz \
+#   && rm -rf queryfile-example-10million-201202.gz \
 #   && apk del wget
 
 CMD ["sh"]
