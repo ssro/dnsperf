@@ -33,9 +33,9 @@ For help just invoke **`dnsperf -h`** inside the container
 Uncomment below code inside dockerfile to include the file and rebuild
 
 ```
-# RUN wget ftp://ftp.nominum.com/pub/nominum/dnsperf/data/queryfile-example-current.gz \
-#  && gunzip queryfile-example-current.gz \
-#  && rm -rf queryfile-example-current.gz
+# RUN wget https://www.dns-oarc.net/files/dnsperf/data/queryfile-example-10million-201202.gz \
+#  && gunzip queryfile-example-10million-201202.gz \
+#  && rm -rf queryfile-example-10million-201202.gz
 
 ```
 
@@ -48,8 +48,8 @@ Also, the sample file can be downloaded inside the container using the above ftp
 Query server 127.0.0.1 (using the sample query file) for 60 seconds from 1 client
 with 10 requests/sec:
 
-`dnsperf -s 127.0.0.1 -d queryfile-example-current -l 60 -c 1 -Q 10`
+`dnsperf -s 127.0.0.1 -d queryfile-example-10million-201202 -l 60 -c 1 -Q 10`
 
 Test 2 DNS servers for 30 seconds:
 
-`dnsperf -s 127.0.0.1 -s 127.0.0.2 -d queryfile-example-current -l 30`
+`dnsperf -s 127.0.0.1 -s 127.0.0.2 -d queryfile-example-10million-201202 -l 30`
