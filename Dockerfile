@@ -2,7 +2,7 @@ FROM alpine:latest
 
 LABEL maintainer Sebastian Sasu <sebi@nologin.ro>
 
-ENV DNSPERF dnsperf-2.3.2
+ENV DNSPERF dnsperf-2.3.4
 
 RUN apk add --update --no-cache --virtual deps wget g++ make bind-dev openssl-dev libxml2-dev libcap-dev json-c-dev krb5-dev protobuf-c-dev fstrm-dev \
   && apk add --update --no-cache bind libcrypto1.1 \
