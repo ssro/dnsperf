@@ -30,12 +30,12 @@ For help just invoke **`dnsperf -h`** inside the container
 
 ### Including the sample query file
 
-Uncomment below code inside dockerfile to include the file and rebuild
+Add below RUN statement to dockerfile to build a version with sample data
 
 ```
-# RUN wget https://www.dns-oarc.net/files/dnsperf/data/queryfile-example-10million-201202.gz \
-#  && gunzip queryfile-example-10million-201202.gz \
-#  && rm -rf queryfile-example-10million-201202.gz
+RUN wget https://www.dns-oarc.net/files/dnsperf/data/queryfile-example-10million-201202.gz \
+ && gunzip queryfile-example-10million-201202.gz \
+ && rm -rf queryfile-example-10million-201202.gz
 
 ```
 
