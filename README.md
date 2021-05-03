@@ -2,7 +2,7 @@
 
 ### DNS benchmark tool on docker
 
-Alpine linux build of Nominum, now DNS-OARC, [dnsperf](http://nominum.com/measurement-tools/)
+Debian linux build of Nominum, now DNS-OARC, [dnsperf](http://nominum.com/measurement-tools/)
 
 Building an image out of this repository won't create an image with the sample file, unless you 
 explicitly create your own by uncommenting few lines in Dockerfile (see below). However I'm providing an image 
